@@ -75,23 +75,6 @@ Thirdly I want you to tell me the suggested move I should do in one word, either
 """
 
 
-def animate_loading(message="Thinking"):
-    def animate():
-        for c in itertools.cycle([".", "..", "..."]):
-            if done:
-                break
-            sys.stdout.write(f"\r{message} {c}")
-            sys.stdout.flush()
-            time.sleep(0.5)
-        sys.stdout.write("\r" + " " * (len(message) + 5) + "\r")  # Clear the line
-
-    done = False
-    t = threading.Thread(target=animate)
-    t.start()
-
-    return t, lambda: setattr(done, True)
-
-
 def get_yt_ids():
     print("Getting Youtube Video IDs...")
 
